@@ -1,0 +1,51 @@
+// ==========================================
+// Centralized SCSS Variables - GitHub Projects Style
+// ==========================================
+
+// GitHub Theme Dark Palette (Default)
+$gh-bg-canvas: #0d1117;
+$gh-bg-canvas-subtle: #161b22;
+$gh-bg-canvas-inset: #010409;
+$gh-bg-card: #21262d;
+$gh-bg-card-hover: #30363d;
+$gh-border-default: #30363d;
+$gh-border-muted: #21262d;
+$gh-border-subtle: rgba(240, 246, 252, 0.1);
+
+// Typography & Text colors
+$gh-text-primary: #e6edf3;
+$gh-text-secondary: #848d97;
+$gh-text-muted: #6e7681;
+$gh-text-link: #4493f8;
+
+// GitHub Accent & Status Colors
+$gh-accent: #238636;
+$gh-accent-hover: #2ea043;
+$gh-blue: #2f81f7;
+$gh-purple: #a371f7;
+$gh-green: #3fb950;
+$gh-yellow: #d29922;
+$gh-red: #f85149;
+$gh-orange: #db6d28;
+$gh-cyan: #39c5cf;
+
+// Priority Colors
+$priority-urgent: #f85149;
+$priority-high: #db6d28;
+$priority-medium: #d29922;
+$priority-low: #6e7681;
+
+// Dimensions & Layout
+$column-width: 330px;
+$column-gap: 16px;
+$header-height: 60px;
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 10px;
+$border-radius-pill: 999px;
+
+// Shadows & Transitions
+$shadow-card: 0 1px 3px rgba(0, 0, 0, 0.24), 0 1px 2px rgba(0, 0, 0, 0.48);
+$shadow-card-hover: 0 3px 8px rgba(0, 0, 0, 0.4);
+$shadow-overlay: 0 16px 32px rgba(1, 4, 9, 0.85);
+$transition-default: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);

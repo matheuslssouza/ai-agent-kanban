@@ -1,0 +1,11 @@
+{
+  "name": "kanban-mcp-server",
+  "version": "1.0.0",
+  "description": "Local Model Context Protocol (MCP) server for GitHub Projects Kanban Board",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}

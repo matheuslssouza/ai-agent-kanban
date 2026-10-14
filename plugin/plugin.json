@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bootstrap-agent-architecture",
+  "version": "3.0.0",
+  "description": "Bootstrap enxuto e multiplataforma para trabalhar com agentes de IA em projetos usando Codex, Claude Code, Cursor e Antigravity.",
+  "author": { "name": "Victor Sena" },
+  "homepage": "https://github.com/Senavictors/bootstrap-agent-architecture-plugin",
+  "repository": "https://github.com/Senavictors/bootstrap-agent-architecture-plugin",
+  "license": "MIT",
+  "keywords": ["agents", "codex", "claude-code", "cursor", "antigravity", "architecture", "workflow"]
+}

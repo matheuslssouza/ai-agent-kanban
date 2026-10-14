@@ -1,0 +1,29 @@
+# System & OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Backend (Java / Maven / H2)
+backend/target/
+backend/data/
+**/data/*.db
+*.mv.db
+*.trace.db
+
+# Frontend (Node / Angular)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+node_modules/
+dist/
+
+# IDE & Editor files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# Tools cache
+.tools/

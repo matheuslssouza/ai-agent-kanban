@@ -1,0 +1,11 @@
+// ==========================================
+// Centralized SCSS Hub
+// All SCSS styles are modularized in the /src/styles folder
+// ==========================================
+
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+@use './styles/github-theme' as *;
+@use './styles/kanban' as *;
+@use './styles/modal' as *;
+@use './styles/ai-bar' as *;

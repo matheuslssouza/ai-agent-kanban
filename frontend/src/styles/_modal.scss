@@ -1,0 +1,117 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+// ==========================================
+// Modal & Drawer Styling (GitHub Projects style detail editor)
+// ==========================================
+
+.gh-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(1, 4, 9, 0.75);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  @include flex-center;
+  padding: 20px;
+}
+
+.gh-modal {
+  width: 100%;
+  max-width: 680px;
+  background-color: $gh-bg-canvas-subtle;
+  border: 1px solid $gh-border-default;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-overlay;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: modalSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &__header {
+    padding: 16px 20px;
+    border-bottom: 1px solid $gh-border-default;
+    @include flex-between;
+    background-color: $gh-bg-canvas;
+  }
+
+  &__header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $gh-text-secondary;
+  }
+
+  &__close-btn {
+    background: transparent;
+    border: none;
+    color: $gh-text-muted;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: $border-radius-sm;
+
+    &:hover {
+      color: $gh-text-primary;
+      background-color: $gh-bg-card;
+    }
+  }
+
+  &__body {
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    @include custom-scrollbar;
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: $gh-text-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: inherit;
+    }
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__footer {
+    padding: 14px 20px;
+    border-top: 1px solid $gh-border-default;
+    background-color: $gh-bg-canvas;
+    @include flex-between;
+  }
+}
+
+@keyframes modalSlide {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

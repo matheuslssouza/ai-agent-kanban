@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json.schemastore.org/codex-plugin.json",
+  "name": "bootstrap-agent-architecture",
+  "version": "3.0.0",
+  "description": "Bootstrap enxuto e multiplataforma para trabalhar com agentes de IA em projetos usando Codex, Claude Code, Cursor e Antigravity.",
+  "skills": "./skills/"
+}

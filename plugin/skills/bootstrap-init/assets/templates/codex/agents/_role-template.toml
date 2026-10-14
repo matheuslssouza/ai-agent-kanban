@@ -1,0 +1,5 @@
+name = "<nome-do-papel>"
+description = "<Descrição curta do papel canônico em .agents/roles/<papel>.md>"
+developer_instructions = """
+<Corpo idêntico ao de `.agents/roles/<papel>.md` — copie de lá, não escreva do zero. Preserve Markdown dentro da string TOML.>
+"""

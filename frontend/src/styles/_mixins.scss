@@ -1,0 +1,88 @@
+@use './variables' as *;
+
+// ==========================================
+// Centralized SCSS Mixins
+// ==========================================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $gh-border-default;
+    border-radius: $border-radius-pill;
+    &:hover {
+      background: $gh-text-muted;
+    }
+  }
+}
+
+@mixin gh-button($variant: 'secondary') {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: $transition-default;
+  border: 1px solid;
+  user-select: none;
+  text-decoration: none;
+
+  @if $variant == 'primary' {
+    background-color: $gh-accent;
+    border-color: rgba(240, 246, 252, 0.1);
+    color: #ffffff;
+    &:hover {
+      background-color: $gh-accent-hover;
+    }
+  } @else if $variant == 'danger' {
+    background-color: $gh-bg-canvas-subtle;
+    border-color: $gh-border-default;
+    color: $gh-red;
+    &:hover {
+      background-color: $gh-red;
+      color: #ffffff;
+      border-color: $gh-red;
+    }
+  } @else {
+    background-color: $gh-bg-card;
+    border-color: $gh-border-default;
+    color: $gh-text-primary;
+    &:hover {
+      background-color: $gh-bg-card-hover;
+      border-color: $gh-text-muted;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

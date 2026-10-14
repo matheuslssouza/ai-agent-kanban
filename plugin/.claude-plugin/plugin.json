@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "bootstrap-agent-architecture",
+  "description": "Bootstrap enxuto e multiplataforma para trabalhar com agentes de IA em projetos usando Claude Code, Codex, Cursor e Antigravity, com estado persistente, skills focadas e guardrails opcionais.",
+  "version": "3.0.0",
+  "author": {
+    "name": "Victor Sena"
+  },
+  "homepage": "https://github.com/Senavictors/bootstrap-agent-architecture-plugin",
+  "repository": "https://github.com/Senavictors/bootstrap-agent-architecture-plugin",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "architecture",
+    "adr",
+    "documentation",
+    "governance",
+    "claude-code",
+    "cursor",
+    "codex"
+  ]
+}

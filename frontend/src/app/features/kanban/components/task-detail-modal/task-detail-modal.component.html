@@ -1,0 +1,186 @@
+<div class="gh-modal-backdrop" (click)="close.emit()">
+  <div class="gh-modal" style="max-width: 860px;" (click)="$event.stopPropagation()">
+    <div class="gh-modal__header">
+      <div class="gh-modal__header-title">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/>
+          <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"/>
+        </svg>
+        <span>{{ isNew ? 'Novo Item' : 'Item #' + task.id }}</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px;">
+        @if (!isNew) {
+          <div style="display: flex; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 2px;">
+            <button
+              type="button"
+              class="gh-button"
+              style="padding: 2px 8px; font-size: 11px; border: none;"
+              [style.background]="activeTab === 'preview' ? '#21262d' : 'transparent'"
+              [style.color]="activeTab === 'preview' ? '#e6edf3' : '#848d97'"
+              (click)="activeTab = 'preview'"
+            >
+              📖 Observações (Leitura)
+            </button>
+            <button
+              type="button"
+              class="gh-button"
+              style="padding: 2px 8px; font-size: 11px; border: none;"
+              [style.background]="activeTab === 'edit' ? '#21262d' : 'transparent'"
+              [style.color]="activeTab === 'edit' ? '#e6edf3' : '#848d97'"
+              (click)="activeTab = 'edit'"
+            >
+              ✏️ Editar
+            </button>
+          </div>
+        }
+
+        <button type="button" class="gh-modal__close-btn" (click)="close.emit()">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <form (submit)="onSubmit($event)">
+      <div class="gh-modal__body" style="max-height: 70vh;">
+        <div class="gh-modal__form-group">
+          <label for="taskTitle">Título da Task</label>
+          <input
+            id="taskTitle"
+            type="text"
+            class="gh-input"
+            placeholder="Título da tarefa..."
+            [(ngModel)]="formData.title"
+            name="title"
+            required
+          />
+        </div>
+
+        <div class="gh-modal__form-row">
+          <div class="gh-modal__form-group">
+            <label for="taskStatus">Status / Coluna</label>
+            <select
+              id="taskStatus"
+              class="gh-select"
+              [(ngModel)]="formData.status"
+              name="status"
+            >
+              <option value="BACKLOG">Backlog</option>
+              <option value="TODO">Todo</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="IN_REVIEW">In Review</option>
+              <option value="DONE">Done</option>
+            </select>
+          </div>
+
+          <div class="gh-modal__form-group">
+            <label for="taskPriority">Prioridade</label>
+            <select
+              id="taskPriority"
+              class="gh-select"
+              [(ngModel)]="formData.priority"
+              name="priority"
+            >
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+              <option value="URGENT">Urgent</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="gh-modal__form-row">
+          <div class="gh-modal__form-group">
+            <label for="taskAssignee">Responsável / Agente</label>
+            <input
+              id="taskAssignee"
+              type="text"
+              class="gh-input"
+              placeholder="Ex: backend + dados, frontend, AI Assistant..."
+              [(ngModel)]="formData.assignee"
+              name="assignee"
+            />
+          </div>
+
+          <div class="gh-modal__form-group">
+            <label for="taskDueDate">Data de Entrega</label>
+            <input
+              id="taskDueDate"
+              type="date"
+              class="gh-input"
+              [(ngModel)]="formData.dueDate"
+              name="dueDate"
+            />
+          </div>
+        </div>
+
+        <div class="gh-modal__form-group">
+          <label for="taskLabels">Labels / Tags</label>
+          <input
+            id="taskLabels"
+            type="text"
+            class="gh-input"
+            placeholder="Ex: feature, postgis, angular, accessibility"
+            [(ngModel)]="labelsString"
+            name="labels"
+          />
+        </div>
+
+        <!-- Seção de Observações / Descrição Completa -->
+        <div class="gh-modal__form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <label for="taskDesc">
+              📋 Observações &amp; Descrição Completa da Task
+            </label>
+            <span style="font-size: 11px; color: #848d97;">
+              {{ formData.description.length }} caracteres
+            </span>
+          </div>
+
+          @if (activeTab === 'preview' && !isNew) {
+            <div
+              style="background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 16px; font-size: 13px; line-height: 1.6; color: #e6edf3; max-height: 380px; overflow-y: auto; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"
+            >{{ formData.description }}</div>
+          } @else {
+            <textarea
+              id="taskDesc"
+              class="gh-input"
+              style="min-height: 280px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; line-height: 1.5;"
+              placeholder="Cole ou edite a descrição completa da tarefa em Markdown..."
+              [(ngModel)]="formData.description"
+              name="description"
+            ></textarea>
+          }
+        </div>
+      </div>
+
+      <div class="gh-modal__footer">
+        <div>
+          @if (!isNew) {
+            <button
+              type="button"
+              class="gh-button gh-button--danger"
+              (click)="delete.emit(task.id)"
+            >
+              Excluir Item
+            </button>
+          }
+        </div>
+
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="gh-button" (click)="close.emit()">
+            Fechar
+          </button>
+          <button
+            type="submit"
+            class="gh-button"
+            style="background: #238636; border-color: rgba(240, 246, 252, 0.1); color: #ffffff;"
+            [disabled]="!formData.title.trim()"
+          >
+            {{ isNew ? 'Criar Item' : 'Salvar Alterações' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
